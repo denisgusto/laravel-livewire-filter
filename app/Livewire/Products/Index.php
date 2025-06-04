@@ -71,9 +71,9 @@ class Index extends Component
     public function products()
     {
         return Product::query()
-            ->when($this->filters['product'], fn($q) => $q->where('name', 'like', "%{$this->filters['product']}%"))
-            ->when($this->filters['category'], fn($q) => $q->where('category_id', $this->filters['category']))
-            ->when($this->filters['brand'], fn($q) => $q->where('brand_id', $this->filters['brand']))
+            ->when($this->filters['product'], fn ($q) => $q->where('name', 'like', "%{$this->filters['product']}%"))
+            ->when($this->filters['category'], fn ($q) => $q->where('category_id', $this->filters['category']))
+            ->when($this->filters['brand'], fn ($q) => $q->where('brand_id', $this->filters['brand']))
             ->with(['category', 'brand'])
             ->get();
     }
